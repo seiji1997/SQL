@@ -13,11 +13,11 @@ Learning SQL.
 
 
 ## execution order
-- 3, from
-- 4, where
-- 5, group by
-- 2, aggregate functions
-- 6, having
-- 1, select
+- 1, from
+- 2, where
+- 3, group by
+- 4, aggregate functions
+- 5, having
+- 6, select
 - 7, order by
 - 8, limit
