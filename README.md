@@ -17,7 +17,7 @@ Learning SQL.
 - 2, where
 - 3, group by
 - 4, aggregate functions
-- 5, select
-- 6, having
+- 5, having
+- 6, select
 - 7, order by
 - 8, limit
