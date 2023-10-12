@@ -1,7 +1,35 @@
-# SQL
+### description order
+- 1, select
+- 2, aggregate functions
+- 3, from
+- 4, where
+- 5, group by
+- 6, having
+- 7, order by
+- 8, limit
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+### execution order
+- 1, from
+- 2, where
+- 3, group by
+- 4, aggregate functions
+- 5, having
+- 6, select
+- 7, order by
+- 8, limit
 
-## **Goal in 2024**
-- yet
+
+## description SQL
+
+### SQL SELECT STATEMENTS
+
+```sql
+# select all rows and columns from table tbl 
+select * from tbl
+```
+
+### SQL JOIN STATEMENTS
+
+### SQL TABLE STATEMENTS
+
+### SQL UPDATE TABLE 
