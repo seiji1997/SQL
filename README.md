@@ -1,22 +1,15 @@
-### description order
-- 1, select
-- 2, aggregate functions
-- 3, from
-- 4, where
-- 5, group by
-- 6, having
-- 7, order by
-- 8, limit
+## Explain the order of description and execution
 
-### execution order
-- 1, from
-- 2, where
-- 3, group by
-- 4, aggregate functions
-- 5, having
-- 6, select
-- 7, order by
-- 8, limit
+No.|description order|execution order|
+|:---:|:---:|:---:|
+1|select|from|
+2|aggregate functions|where|
+3|from|group by|
+4|where|aggregate functions|
+5|group by|having|
+6|having|select|
+7|order by|order by|
+8|limit|limit|
 
 
 ## description SQL
