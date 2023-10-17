@@ -1,8 +1,5 @@
-# SQL
+# Data types
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+A Data type is a classification that defines the type, range of values, allowable operations on the values, and the meaning of the data values.
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
-
-
+https://www.postgresql.org/docs/current/datatype.html
