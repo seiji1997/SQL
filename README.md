@@ -10,19 +10,3 @@ No.|description order|execution order|
 6|having|select|
 7|order by|order by|
 8|limit|limit|
-
-
-## description SQL
-
-### SQL SELECT STATEMENTS
-
-```sql
-# select all rows and columns from table tbl 
-select * from tbl
-```
-
-### SQL JOIN STATEMENTS
-
-### SQL TABLE STATEMENTS
-
-### SQL UPDATE TABLE 
