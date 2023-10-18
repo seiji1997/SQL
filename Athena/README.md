@@ -1,8 +1,7 @@
 # SQL
 
 ### Time control
-https://docs.aws.amazon.com/redshift/latest/dg/r_CURRENT_DATE_function.html
-
+[CURRENT_DATE_function](https://docs.aws.amazon.com/redshift/latest/dg/Date_functions_header.html)
 
 ```sql
 select current_date;
