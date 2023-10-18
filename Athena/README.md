@@ -40,6 +40,7 @@ select * from r_date
 ```
 
 ### control by Athena
+https://docs.aws.amazon.com/redshift/latest/dg/r_CURRENT_DATE_function.html
 
 ```sql
 select substr(cast(current_timestamp at time zone 'Asia/Tokyo' as varchar), 1, 4)
