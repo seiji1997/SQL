@@ -18,7 +18,7 @@ select current_date;
 ```
 
 
-### control with python
+### control with python(Lambda)
 ```sql
 with now_date as (
 --  select date_parse('20231018', '%Y%m%d') as today
