@@ -62,6 +62,9 @@ select day(current_timestamp at time zone 'Asia/Tokyo') as r_day
 ```
 
 
+# Data Types
+
+https://prestodb.io/docs/current/language/types.html
 
 
 
