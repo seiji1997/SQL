@@ -20,7 +20,8 @@ crawlerを使用した際に、一部カラムのデータ型がER図の通り�
 
 ## ER図
 github内の[100knocks-preprocess](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/work/data/100knocks_ER.png)を参照。
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/2844524/28231915-6ae9-8975-6df8-95f9fec2fbf9.png)
+<img width="1469" alt="スクリーンショット 2023-10-27 21 55 21" src="https://github.com/seiji1997/SQL/assets/72504808/f7bf42ec-cb8c-4a06-a46e-8eb5e6259f15">
+
 
 ## 問題と回答
 ※今回はテーブル操作やファイル入出力操作に関する設問は対象外とさせていただいております。
