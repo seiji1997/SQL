@@ -2,14 +2,15 @@
 [データサイエンス100本ノック(構造化データ加工編)](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess)
 
 ## 環境
-今回はAmazon Athenaで実行しました。
-リポジトリから[DB作成用のcsvファイル](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)を抽出してS3に格納し、Glue Crawlerを用いてデータベース・テーブルを作成しました。
-（データベース名：`sql_knocks`）
+Query at Amazon Athena.
+[create the database by these CSV files](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)
+（database name：`sql_training`）
 
- **注意点**
-crawlerを使用した際に、一部カラムのデータ型がER図の通りのデータ型にならないため修正が必要です。
+ **notes**
+Crawler：　Data types of some columns need to modified to the specifications as in the diagram.
 
-| テーブル名 | カラム名 | 修正前 | 修正後 |
+
+| table | column | before | after |
 | --- | --- | --- | --- |
 | customer | birth_day | string | date |
 | category、product | category_major_cd | bigint | string |
@@ -18,13 +19,9 @@ crawlerを使用した際に、一部カラムのデータ型がER図の通り�
 |  store | prefecture_cd | bigint | string |
 
 
-## ER図
-github内の[100knocks-preprocess](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/work/data/100knocks_ER.png)を参照。
+## ER diagram
 <img width="1469" alt="スクリーンショット 2023-10-27 21 55 21" src="https://github.com/seiji1997/SQL/assets/72504808/f7bf42ec-cb8c-4a06-a46e-8eb5e6259f15">
 
-
-## 問題と回答
-※今回はテーブル操作やファイル入出力操作に関する設問は対象外とさせていただいております。
 
 ## S-001〜S-010
 >S-001: レシート明細データ（receipt）から全項目の先頭10件を表示し、どのようなデータを保有しているか目視で確認せよ。
