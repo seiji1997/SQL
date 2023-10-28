@@ -1,13 +1,13 @@
 # SQL
 [データサイエンス100本ノック(構造化データ加工編)](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess)
 
-## 環境
+## Learning enviroment
 Query at Amazon Athena.
 [create the database by these CSV files](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)
 （database name：`sql_training`）
 
  **notes**
-Crawler：　Data types of some columns need to modified to the specifications as in the diagram.
+Crawler：　Data types of some columns need to be modified to the specifications as in the diagram.
 
 
 | table | column | before | after |
@@ -24,7 +24,7 @@ Crawler：　Data types of some columns need to modified to the specifications a
 
 
 ## S-001〜S-010
->S-001: レシート明細データ（receipt）から全項目の先頭10件を表示し、どのようなデータを保有しているか目視で確認せよ。
+>S-001: display the first 10 items of all receipt details data(receipt) and visually data what kind of data you have. 
 
 <details><summary>回答</summary><div>
 
