@@ -3,9 +3,13 @@
  **notes**
 Crawler：　Data types of some columns need to be modified to the specifications. So create table by Athena query<be>
 
-change your own `YOUR S3 BUCKET` and `YOUR FOLDER`.
+change your own `DATABASE`.`TABLE` AND `YOUR S3 BUCKET`/`YOUR FOLDER`.
 ```
-`YOUR S3 BUCKET`.`YOUR FOLDER`
+-- table
+`DATABASE`.`TABLE`
+
+-- bucket
+`YOUR S3 BUCKET`/`YOUR FOLDER`
 ```
 
 ### Numeric Types
