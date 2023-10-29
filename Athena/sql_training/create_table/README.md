@@ -35,8 +35,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
   `customer_name` string,
   `gender_cd` string,
   `gender` string,
-  `birth_day` string,
-  `age` string,
+  `birth_day` timestamp,
+  `age` int,
   `postal_cd` string,
   `address` string,
   `application_store_cd` string,
@@ -63,8 +63,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
   `street` string,
   `address` string,
   `full_address` string,
-  `longitude` string,
-  `latitude` string
+  `longitude` int,
+  `latitude` int
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -82,8 +82,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
   `category_major_cd` string,
   `category_medium_cd` string,
   `category_small_cd` string,
-  `unit_price` string,
-  `unit_cost` string
+  `unit_price` int,
+  `unit_cost` int
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -98,15 +98,15 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 
 ```sql
 CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `sales_ymd` string,
-  `sales_epoch` string,
+  `sales_ymd` int,
+  `sales_epoch` int,
   `store_cd` string,
-  `receipt_no` string,
-  `receipt_sub_no` string,
+  `receipt_no` int,
+  `receipt_sub_no` int,
   `customer_id` string,
   `product_cd` string,
-  `quantity` string,
-  `amount` string
+  `quantity` int,
+  `amount` int
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -128,9 +128,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
   `address` string,
   `address_kana` string,
   `tel_no` string,
-  `longitude` string,
-  `latitude` string,
-  `floor_area` string
+  `longitude` int,
+  `latitude` int,
+  `floor_area` int
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
