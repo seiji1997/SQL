@@ -162,3 +162,13 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 ```
 
 
+## DROP TABLE 
+
+```sql
+DROP TABLE `category`;
+DROP TABLE `customer`;
+DROP TABLE `geocode`;
+DROP TABLE `product`;
+DROP TABLE `receipt`;
+DROP TABLE `store`;
+```
