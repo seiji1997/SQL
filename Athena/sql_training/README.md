@@ -16,7 +16,7 @@ https://github.com/seiji1997/SQL/tree/master/Athena/sql_training/create_table
 
 
 ## S-001〜S-010
->S-001: display the first 10 items of all receipt details data(receipt) and visually show what kind of data you have. 
+>S-001: display the first 10 items of all receipt data from the receipt table and visually show what kind of data you have. 
 
 <details><summary>sql</summary><div>
 
@@ -40,7 +40,7 @@ limit 10
 
 
 ---
->S-002: display 10 items from receipt data, specifying columns in order of sales_ymd, customer_id, product_cd, and amount.
+>S-002: display 10 items from the receipt table, specifying columns in order of sales_ymd, customer_id, product_cd, and amount.
 
 <details><summary>sql</summary><div>
 
@@ -65,7 +65,7 @@ limit 10
 </div></details>
 
 ---
->S-003:　display 10 items from receipt data, specifying sales_ymd, customer_id, product_cd, and amount. However, extraction should be done while changing the item name [sales_ymd] to [sales_date].
+>S-003:　display 10 items from the receipt table, specifying sales_ymd, customer_id, product_cd, and amount. However, extraction should be done while changing the item name [sales_ymd] to [sales_date].
 
 <details><summary>sql</summary><div>
 
@@ -91,30 +91,27 @@ limit 10
 </div></details>
 
 ---
->S-004: レシート明細データ（receipt）から売上日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上金額（amount）の順に列を指定し、以下の条件を満たすデータを抽出せよ。
+>S-004: specifcate [sales_ymd], [customer_id], [product_cd] and [amount] from the receipt table. and extract specific data under the conditions below [customer_id = 'CS018205000001'].
 
 <details><summary>sql</summary><div>
 
 ```sql
-SELECT
+select 
     sales_ymd
     , customer_id
     , product_cd
     , amount
-FROM
-    "sql_knocks"."receipt"
-WHERE customer_id = 'CS018205000001'
-;
+from "receipt-data-for-sql-training"."receipt" 
+where customer_id = 'CS018205000001'
 ```
 
 </div></details>
 
 <details><summary>note</summary><div>
 
-- 条件によるレコードの絞り込みはWHERE句
-    - prestoでは、（テーブルやカラムでなく）”値”を表現する際には**シングルクオート**括り
-        - ダブルクオートでは**無い**ことに注意
-
+- [WHERE] clause is used to narrow down the columns by condition.
+    - in presto ['] is for value. can't use ["]　 to specify a value
+      
 </div></details>
 
 ---
