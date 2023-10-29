@@ -26,18 +26,17 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 
 ```sql
 CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string
+  `customer_id` string,
+  `customer_name` string,
+  `gender_cd` string,
+  `gender` string,
+  `birth_day` string,
+  `age` string,
+  `postal_cd` string,
+  `address` string,
+  `application_store_cd` string,
+  `application_date` string,
+  `status_cd` string
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -52,18 +51,15 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 
 ```sql
 CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string
+  `postal_cd` string,
+  `prefecture` string,
+  `city` string,
+  `town` string,
+  `street` string,
+  `address` string,
+  `full_address` string,
+  `longitude` string,
+  `latitude` string
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -77,18 +73,12 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 
 ```sql
 CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string
+  `product_cd` string,
+  `category_major_cd` string,
+  `category_medium_cd` string,
+  `category_small_cd` string,
+  `unit_price` string,
+  `unit_cost` string
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -103,18 +93,15 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 
 ```sql
 CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string
+  `sales_ymd` string,
+  `sales_epoch` string,
+  `store_cd` string,
+  `receipt_no` string,
+  `receipt_sub_no` string,
+  `customer_id` string,
+  `product_cd` string,
+  `quantity` string,
+  `amount` string
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -129,18 +116,16 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 
 ```sql
 CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string
+  `store_cd` string,
+  `store_name` string,
+  `prefecture_cd` string,
+  `prefecture` string,
+  `address` string,
+  `address_kana` string,
+  `tel_no` string,
+  `longitude` string,
+  `latitude` string,
+  `floor_area` string
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES ('field.delim' = ',')
@@ -151,29 +136,3 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 ```
 
 
-
-
-### category
-
-```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string,
-  `` string
-)
-ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
-WITH SERDEPROPERTIES ('field.delim' = ',')
-STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION 's3://YOUR S3 BUCKET/YOUR FOLDER/'
-TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
-
-```
