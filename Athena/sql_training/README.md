@@ -5,10 +5,10 @@
 Query at Amazon Athena.<br>
 1, [create the database by these CSV files](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)<br>
 2, [how to set the table with csv in S3](https://dev.classmethod.jp/articles/glue-crawler-athena-tutorial/)<br>
-3, (AWS Glue databases)[https://docs.aws.amazon.com/glue/latest/dg/define-database.html]<br>
+3, [AWS Glue databases](https://docs.aws.amazon.com/glue/latest/dg/define-database.html)<br>
 
- **notes**
-Crawler：　Data types of some columns need to be modified to the specifications. so create table by Athena query<br>
+ **notes**<br>
+Crawler：　Data types of some columns need to be modified to the specifications. so create a table by Athena query<br>
 https://github.com/seiji1997/SQL/tree/master/Athena/sql_training/create_table
 
 ## ER diagram
