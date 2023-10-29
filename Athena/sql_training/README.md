@@ -20,49 +20,42 @@ https://github.com/seiji1997/SQL/tree/master/Athena/sql_training/create_table
 
 <details><summary>sql</summary><div>
 
-```sql:sql
-SELECT
-    *
-FROM "sql_knocks"."receipt"
-LIMIT 10
-;
+```sql
+select * 
+from "receipt-data-for-sql-training"."receipt" 
+limit 10
 ```
 
 </div></details>
 
 <details><summary>note</summary><div>
 
-- presto SQLでは、テーブル指定を”<データベース名>”.”<テーブル名>”で指定する。
-    - ダブルクオートであることに注意
-    - 囲まなくても処理は通るが、シングルクオートはX（値を意味するため）
-- “ SELECT * ”は全カラム指定
-- 先頭10件: LIMIT 10
+- In presto SQL, specify the table name "database name"."table name"
+    - using "" for table defenition
+    - it is not nessesarary to use "" but, '' doesn't much. it's for columns.
+- “ SELECT * ” is all columns.
+- LIMIT 10: first 10 columns.
 
 </div></details>
 
 
 ---
->S-002: レシート明細データ（receipt）から売上年月日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上金額（amount）の順に列を指定し、10件表示せよ。
+>S-002: display 10 items from receipt data, specifying columns in order of sales_ymd, customer_id, product_cd, amount.
 
 <details><summary>sql</summary><div>
 
-```sql:sql
-SELECT
-    sales_ymd
-    , customer_id
-    , product_cd
-    , amount
-FROM "sql_knocks"."receipt"
-LIMIT 10
-;
+```sql
+select sales_ymd, customer_id, product_cd, amount
+from "receipt-data-for-sql-training"."receipt" 
+limit 10
 ```
 
 </div></details>
 
 <details><summary>note</summary><div>
 
-- カラム指定はカンマ区切り
-- 人それぞれだが、カンマは先頭につけるとコメントアウトしやすい
+- column disignations are comma-separated
+- comma is first: easy to use
 
 </div></details>
 
@@ -71,7 +64,7 @@ LIMIT 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     sales_ymd AS "sales_date"
     , customer_id
@@ -97,7 +90,7 @@ LIMIT 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     sales_ymd
     , customer_id
@@ -124,7 +117,7 @@ WHERE customer_id = 'CS018205000001'
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     sales_ymd
     , customer_id
@@ -153,7 +146,7 @@ WHERE customer_id = 'CS018205000001'
 > - 売上金額（amount）が1,000以上または売上数量（quantity）が5以上
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     sales_ymd
     , customer_id
@@ -188,7 +181,7 @@ WHERE
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     sales_ymd
     , customer_id
@@ -217,7 +210,7 @@ WHERE customer_id = 'CS018205000001'
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     sales_ymd
     , customer_id
@@ -245,7 +238,7 @@ WHERE customer_id = 'CS018205000001'
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     *
 FROM "sql_knocks"."store"
@@ -269,7 +262,7 @@ WHERE prefecture_cd != 13
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT * 
 FROM "sql_knocks"."store"
 WHERE 
@@ -295,7 +288,7 @@ LIMIT 10
 >S-011: 顧客データ（customer）から顧客ID（customer_id）の末尾が1のものだけ全項目抽出し、10件表示せよ。
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT * 
 FROM "sql_knocks"."store"
 WHERE "store_cd" LIKE '%1'
@@ -318,7 +311,7 @@ LIMIT 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT * 
 FROM "sql_knocks"."store"
 WHERE "address" LIKE '%横浜市%'
@@ -339,7 +332,7 @@ WHERE "address" LIKE '%横浜市%'
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT *
 FROM "sql_knocks"."customer"
 WHERE regexp_like(status_cd, '^[A-F]')
@@ -366,7 +359,7 @@ LIMIT 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT *
 FROM "sql_knocks"."customer"
 WHERE regexp_like(status_cd, '[1-9]$')
@@ -388,7 +381,7 @@ LIMIT 10;
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT *
 FROM "sql_knocks"."customer"
 WHERE regexp_like(status_cd, '^[A-F].*[1-9]$')
@@ -414,7 +407,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT *
 FROM "sql_knocks"."customer"
 WHERE regexp_like(status_cd, '^[0-9]{3}-[0-9]{3}-[0-9]{4}$')
@@ -437,7 +430,7 @@ WHERE regexp_like(status_cd, '^[0-9]{3}-[0-9]{3}-[0-9]{4}$')
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT * 
 FROM "sql_knocks"."customer"
 ORDER BY birth_day
@@ -460,7 +453,7 @@ Limit 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT * 
 FROM "sql_knocks"."customer"
 ORDER BY birth_day DESC
@@ -482,7 +475,7 @@ Limit 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     customer_id
     , amount 
@@ -512,7 +505,7 @@ Limit 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     customer_id
     , amount
@@ -539,7 +532,7 @@ Limit 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
   count(*)
 FROM "sql_knocks"."receipt"
@@ -561,7 +554,7 @@ FROM "sql_knocks"."receipt"
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
   count(DISTINCT customer_id)
 FROM "sql_knocks"."receipt"
@@ -582,7 +575,7 @@ FROM "sql_knocks"."receipt"
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
   store_cd
   ,sum(amount) "sum_amount"
@@ -612,7 +605,7 @@ GROUP BY store_cd
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
   customer_id
   , max(sales_ymd) "newistday"
@@ -637,7 +630,7 @@ LIMIT 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
   customer_id
   , min(sales_ymd) "oldestday"
@@ -662,7 +655,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     customer_id
     , max(sales_ymd) "max"
@@ -691,7 +684,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     store_cd
     , avg(amount) "ave"
@@ -717,7 +710,7 @@ LIMIT 5
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     store_cd
     , APPROX_PERCENTILE(amount, 0.5) "med"
@@ -745,7 +738,7 @@ LIMIT 5
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 -- 店舗コードかつ商品コードごとの明細の出現数を算出
 WITH product_cnt AS (
     SELECT
@@ -806,7 +799,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     store_cd
     ,var_pop(amount) "var"
@@ -833,7 +826,7 @@ LIMIT 5
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     store_cd
     , stddev_pop(amount) "stds_amount"
@@ -861,7 +854,7 @@ LIMIT 5
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     APPROX_PERCENTILE(amount, 0.0) "pt0_min"
     , APPROX_PERCENTILE(amount, 0.25) "pt25"
@@ -887,7 +880,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     store_cd,
     avg(amount) "avg_amount"
@@ -918,7 +911,7 @@ HAVING
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH customer_amount AS (
     SELECT
         customer_id
@@ -948,7 +941,7 @@ FROM customer_amount
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH customer_amount AS (
     SELECT
         customer_id
@@ -987,7 +980,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     r.*,
     s.store_name
@@ -1012,7 +1005,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     p.*,
     c.category_small_name
@@ -1036,7 +1029,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH customer_amount AS (
     SELECT
         customer_id
@@ -1082,7 +1075,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH customer_data AS (
     select
         customer_id
@@ -1138,7 +1131,7 @@ ON d.customer_id = a.customer_id
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     COUNT(1)
 FROM "sql_knocks"."store"
@@ -1162,7 +1155,7 @@ CROSS JOIN "sql_knocks"."product"
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sales_amount_by_date AS (
     SELECT
         sales_ymd
@@ -1207,7 +1200,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 -- コード例1:縦持ちケース
 WITH sales_amount_by_date AS (
     SELECT
@@ -1241,7 +1234,7 @@ ORDER BY
 LIMIT 10
 ;
 ```
-```sql:sql
+```sql
 -- コード例2:横持ちケース
 WITH sales_amount_by_date AS (
     SELECT
@@ -1310,7 +1303,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     customer_id 
     , date_format(birth_day, '%Y%m%d') "birth_day"
@@ -1337,7 +1330,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
   customer_id
   , date(date_parse(application_date,'%Y%m%d')) "application_date"
@@ -1364,7 +1357,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT  
     receipt_no 
     , receipt_sub_no
@@ -1389,7 +1382,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
   receipt_no
   , receipt_sub_no
@@ -1415,7 +1408,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     receipt_no
     , receipt_sub_no
@@ -1443,7 +1436,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     receipt_no
     , receipt_sub_no
@@ -1467,7 +1460,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     receipt_no
     , receipt_sub_no
@@ -1490,7 +1483,7 @@ FROM "sql_knocks"."receipt" LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     customer_id
     , SUM(amount) "sum_amount"
@@ -1522,7 +1515,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH cust AS (
     SELECT
         customer_id
@@ -1565,7 +1558,7 @@ GROUP BY c.postal_flg
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 -- 正規表現を用いるケース
 SELECT
     customer_id
@@ -1582,7 +1575,7 @@ LIMIT 10
 ;
 ```
 
-```sql:sql
+```sql
 -- LIKE用いるケース
 SELECT
     customer_id,
@@ -1619,7 +1612,7 @@ LIMIT 10
 
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sales_amount AS(
     SELECT
         customer_id
@@ -1667,7 +1660,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     customer_id
     , birth_day
@@ -1697,7 +1690,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 -- 性別コード１桁と年代コード２桁を連結した性年代コードを生成する
 SELECT
     customer_id
@@ -1725,7 +1718,7 @@ FROM
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 -- カテゴリ数が多いときはとても長いSQLとなってしまう点に注意
 -- カテゴリを一つ減らしたい場合はCASE文をどれか一つ削ればOK
 SELECT
@@ -1753,7 +1746,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sales_amount AS(
     SELECT
         customer_id
@@ -1795,7 +1788,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sales_amount AS(
     SELECT
         customer_id
@@ -1838,7 +1831,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     customer_id
     , sum_amount
@@ -1874,7 +1867,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sum_amount_tbl AS (
     SELECT
         customer_id
@@ -1911,7 +1904,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     product_cd 
     , unit_price 
@@ -1936,7 +1929,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     AVG((unit_price * 1.0 - unit_cost) / unit_price) "unit_profit_rate"
 FROM
@@ -1959,7 +1952,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH new_price_tbl AS (
     SELECT
         product_cd
@@ -1992,7 +1985,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH new_price_tbl AS (
     SELECT
         product_cd
@@ -2025,7 +2018,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH new_price_tbl AS (
     SELECT
         product_cd
@@ -2058,7 +2051,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT
     product_cd
     , unit_price
@@ -2082,7 +2075,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 -- 顧客ごとの売り上げ合計
 WITH amount_all AS(
     SELECT
@@ -2134,7 +2127,7 @@ LIMIT 10;
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH receipt_distinct AS (
     SELECT DISTINCT
         customer_id
@@ -2168,7 +2161,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH receipt_distinct AS (
     SELECT DISTINCT
         customer_id
@@ -2206,7 +2199,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH receipt_distinct AS (
     SELECT distinct
         customer_id
@@ -2244,7 +2237,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH receipt_distinct AS (
     SELECT distinct
         customer_id
@@ -2282,7 +2275,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 -- 当日日付
 WITH sales_date AS (
     select 
@@ -2327,14 +2320,14 @@ limit 10;
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT * 
 FROM "sql_knocks"."customer"
 TABLESAMPLE BERNOULLI(1)
 LIMIT 10
 ;
 ```
-```sql:sql
+```sql
 -- コード例２（丁寧にやるなら。カウントを作って出力件数を固定）
 WITH customer_tmp AS(
     SELECT
@@ -2384,7 +2377,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sample AS (
 SELECT
     gender_cd
@@ -2415,7 +2408,7 @@ WHERE rn <= cnt * 0.1
 GROUP BY gender_cd
 ;
 ```
-```sql:sql
+```sql
 -- コード例2
 WITH cusotmer_random AS (
     SELECT 
@@ -2451,7 +2444,7 @@ GROUP BY gender_cd
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sales_amount AS(
     SELECT
         customer_id
@@ -2493,7 +2486,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 WITH sales_amount AS (
     SELECT 
         customer_id
@@ -2534,7 +2527,7 @@ LIMIT 10
 >
 <details><summary>sql</summary><div>
 
-```sql:sql
+```sql
 SELECT 
     SUM(IF(product_cd IS NULL, 1, 0)) "product_cd"
     , SUM(IF(category_major_cd IS NULL, 1, 0)) "category_major_cd"
