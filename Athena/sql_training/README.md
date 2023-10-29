@@ -16,7 +16,7 @@ https://github.com/seiji1997/SQL/tree/master/Athena/sql_training/create_table
 
 
 ## S-001〜S-010
->S-001: display the first 10 items of all receipt details data(receipt) and visually data what kind of data you have. 
+>S-001: display the first 10 items of all receipt details data(receipt) and visually show what kind of data you have. 
 
 <details><summary>sql</summary><div>
 
@@ -40,49 +40,54 @@ limit 10
 
 
 ---
->S-002: display 10 items from receipt data, specifying columns in order of sales_ymd, customer_id, product_cd, amount.
+>S-002: display 10 items from receipt data, specifying columns in order of sales_ymd, customer_id, product_cd, and amount.
 
 <details><summary>sql</summary><div>
 
 ```sql
-select sales_ymd, customer_id, product_cd, amount
+select 
+    sales_ymd
+    , customer_id
+    , product_cd
+    , amount
 from "receipt-data-for-sql-training"."receipt" 
 limit 10
+
 ```
 
 </div></details>
 
 <details><summary>note</summary><div>
 
-- column disignations are comma-separated
+- column designations are comma-separated
 - comma is first: easy to use
 
 </div></details>
 
 ---
->S-003: レシート明細データ（receipt）から売上年月日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上金額（amount）の順に列を指定し、10件表示せよ。ただし、sales_ymdをsales_dateに項目名を変更しながら抽出すること。
+>S-003:　display 10 items from receipt data, specifying sales_ymd, customer_id, product_cd, and amount. However, extraction should be done while changing the item name [sales_ymd] to [sales_date].
 
 <details><summary>sql</summary><div>
 
 ```sql
-SELECT
-    sales_ymd AS "sales_date"
+select 
+    sales_ymd as sales_date
     , customer_id
     , product_cd
     , amount
-FROM "sql_knocks"."receipt"
-LIMIT 10
-;
+from "receipt-data-for-sql-training"."receipt" 
+limit 10
+
 ```
 
 </div></details>
 
 <details><summary>note</summary><div>
 
-- カラムの別名は”AS”を利用
-    - ダブルクオートであることに注意（英字であれば付けなくても処理は通る）
-    - ASは省略可能
-
+- use [as] for column alias
+    - note ["]: if using a Japanese word, it should be attached. But alphabetical character is not necessary to attach ["].
+    - [as] can be omitted.
+      
 </div></details>
 
 ---
