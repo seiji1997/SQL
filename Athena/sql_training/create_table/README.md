@@ -32,7 +32,7 @@ change your own `YOUR S3 BUCKET` and `YOUR FOLDER`.
 ### category
 
 ```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `DATABASE`.`TABLE` (
   `category_major_cd` string,
   `category_major_name` string,
   `category_medium_cd` string,
@@ -51,7 +51,7 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 ### customer
 
 ```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `DATABASE`.`TABLE` (
   `customer_id` string,
   `customer_name` string,
   `gender_cd` string,
@@ -76,7 +76,7 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 ### geocode
 
 ```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `DATABASE`.`TABLE` (
   `postal_cd` string,
   `prefecture` string,
   `city` string,
@@ -98,7 +98,7 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 ### product
 
 ```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `DATABASE`.`TABLE` (
   `product_cd` string,
   `category_major_cd` string,
   `category_medium_cd` string,
@@ -118,7 +118,7 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 ### receipt
 
 ```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `DATABASE`.`TABLE` (
   `sales_ymd` int,
   `sales_epoch` int,
   `store_cd` string,
@@ -141,7 +141,7 @@ TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 ### store
 
 ```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `DATABASE`.`TABLE` (
   `store_cd` string,
   `store_name` string,
   `prefecture_cd` string,
