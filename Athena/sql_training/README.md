@@ -10,27 +10,7 @@ Query at Amazon Athena.<br>
 
  **notes**
 Crawler：　Data types of some columns need to be modified to the specifications. so create table by Athena query<br>
-
-```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
-  `column1` string,
-  `column2` string,
-  `column3` string,
-  `column4` string,
-  `column5` string,
-  `column6` string,
-  `column7` string,
-  `column8` string,
-  `column9` string,
-
-)
-ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
-WITH SERDEPROPERTIES ('field.delim' = ',')
-STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION 's3://YOUR S3 BUCKET/YOUR FOLDER/'
-TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
-
-```
+https://github.com/seiji1997/SQL/tree/master/Athena/sql_training/create_table
 
 ## ER diagram
 <img width="1469" alt="スクリーンショット 2023-10-27 21 55 21" src="https://github.com/seiji1997/SQL/assets/72504808/f7bf42ec-cb8c-4a06-a46e-8eb5e6259f15">
