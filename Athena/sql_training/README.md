@@ -4,7 +4,6 @@
 ## Learning environment
 Query at Amazon Athena.<br>
 1, [create the database by these CSV files](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)<br>
-（database name：`receipt-data-for-sql_training`）<br>
 2, [how to set the table with csv in S3](https://dev.classmethod.jp/articles/glue-crawler-athena-tutorial/)<br>
 3, (AWS Glue databases)[https://docs.aws.amazon.com/glue/latest/dg/define-database.html]<br>
 
