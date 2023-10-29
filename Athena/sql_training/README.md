@@ -18,7 +18,7 @@ https://github.com/seiji1997/SQL/tree/master/Athena/sql_training/create_table
 ## S-001〜S-010
 >S-001: display the first 10 items of all receipt details data(receipt) and visually data what kind of data you have. 
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -30,7 +30,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - presto SQLでは、テーブル指定を”<データベース名>”.”<テーブル名>”で指定する。
     - ダブルクオートであることに注意
@@ -44,7 +44,7 @@ LIMIT 10
 ---
 >S-002: レシート明細データ（receipt）から売上年月日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上金額（amount）の順に列を指定し、10件表示せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -59,7 +59,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - カラム指定はカンマ区切り
 - 人それぞれだが、カンマは先頭につけるとコメントアウトしやすい
@@ -69,7 +69,7 @@ LIMIT 10
 ---
 >S-003: レシート明細データ（receipt）から売上年月日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上金額（amount）の順に列を指定し、10件表示せよ。ただし、sales_ymdをsales_dateに項目名を変更しながら抽出すること。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -84,7 +84,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - カラムの別名は”AS”を利用
     - ダブルクオートであることに注意（英字であれば付けなくても処理は通る）
@@ -95,7 +95,7 @@ LIMIT 10
 ---
 >S-004: レシート明細データ（receipt）から売上日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上金額（amount）の順に列を指定し、以下の条件を満たすデータを抽出せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -111,7 +111,7 @@ WHERE customer_id = 'CS018205000001'
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 条件によるレコードの絞り込みはWHERE句
     - prestoでは、（テーブルやカラムでなく）”値”を表現する際には**シングルクオート**括り
@@ -122,7 +122,7 @@ WHERE customer_id = 'CS018205000001'
 ---
 >S-005: レシート明細データ（receipt）から売上日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上金額（amount）の順に列を指定し、以下の全ての条件を満たすデータを抽出せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -139,7 +139,7 @@ WHERE customer_id = 'CS018205000001'
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - WHERE句の複数条件はANDで結合（ORもある）
 - 数値型のカラムの値はシングルクオート括りは不要
@@ -151,7 +151,7 @@ WHERE customer_id = 'CS018205000001'
 > 
 > - 顧客ID（customer_id）が"CS018205000001"
 > - 売上金額（amount）が1,000以上または売上数量（quantity）が5以上
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -174,7 +174,7 @@ WHERE
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - AND と OR ではANDが先に評価される
 - ANDよりもORを先に評価したい場合は、OR条件を括弧でくくる
@@ -186,7 +186,7 @@ WHERE
 >- 顧客ID（customer_id）が"CS018205000001"
 >- 売上金額（amount）が1,000以上2,000以下
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -202,7 +202,7 @@ WHERE customer_id = 'CS018205000001'
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - BETWEN A AND Bで「A ≤ 評価対象 ≤ B」と同じ処理
 
@@ -215,7 +215,7 @@ WHERE customer_id = 'CS018205000001'
 > - 顧客ID（customer_id）が"CS018205000001"
 > - 商品コード（product_cd）が"P071401019"以外
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -232,7 +232,7 @@ WHERE customer_id = 'CS018205000001'
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 「以外」は ”!=”
 
@@ -243,7 +243,7 @@ WHERE customer_id = 'CS018205000001'
 > S-009: 以下の処理において、出力結果を変えずにORをANDに書き換えよ。
 > `SELECT * FROM store WHERE NOT (prefecture_cd = '13' OR floor_area > 900)`
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -256,10 +256,10 @@ WHERE prefecture_cd != 13
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 問題文：（`prefecture_cdが13である` もしくは `floor_areaが900よりも大きい`）の、どちらでもない
-- 回答：`prefecture_cd`が13でない、かつ、`floor_area`が900以下である
+- sql：`prefecture_cd`が13でない、かつ、`floor_area`が900以下である
 
 </div></details>
 
@@ -267,7 +267,7 @@ WHERE prefecture_cd != 13
 ---
 >S-010: 店舗データ（store）から、店舗コード（store_cd）が"S14"で始まるものだけ全項目抽出し、10件表示せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT * 
@@ -280,7 +280,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - LIKEは部分一致（⇄完全一致）でのマッチングを実現する
     - %は”ワイルドカード”（全ての文字を許容）を意味する
@@ -293,7 +293,7 @@ LIMIT 10
 ## S-011〜S-020
 
 >S-011: 顧客データ（customer）から顧客ID（customer_id）の末尾が1のものだけ全項目抽出し、10件表示せよ。
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT * 
@@ -305,7 +305,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - LIKEは部分一致（⇄完全一致）でのマッチングを実現する
     - 今回LIKEの後方一致版
@@ -316,7 +316,7 @@ LIMIT 10
 ---
 > S-012: 店舗データ（store）から、住所 (address) に"横浜市"が含まれるものだけ全項目表示せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT * 
@@ -327,7 +327,7 @@ WHERE "address" LIKE '%横浜市%'
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - LIKEは部分一致（⇄完全一致）でのマッチングを実現する
     - 今回LIKEの部分一致版
@@ -337,7 +337,7 @@ WHERE "address" LIKE '%横浜市%'
 ---
 > S-013: 顧客データ（customer）から、ステータスコード（status_cd）の先頭がアルファベットのA〜Fで始まるデータを全項目抽出し、10件表示せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT *
@@ -349,7 +349,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - regexp_likeは、正規表現による文字列のマッチング
 - Athena（Presto）は、[Java正規表現の構文に従う](https://prestodb.io/docs/current/functions/regexp.html)
@@ -364,7 +364,7 @@ LIMIT 10
 ---
 > S-014: 顧客データ（customer）から、ステータスコード（status_cd）の末尾が数字の1〜9で終わるデータを全項目抽出し、10件表示せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT *
@@ -375,7 +375,7 @@ LIMIT 10;
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - S-013と同様
 - 本問題で利用した正規表現
@@ -386,7 +386,7 @@ LIMIT 10;
 ---
 > S-015: 顧客データ（customer）から、ステータスコード（status_cd）の先頭がアルファベットのA〜Fで始まり、末尾が数字の1〜9で終わるデータを全項目抽出し、10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT *
@@ -398,7 +398,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 問題13と同様
 - 本問題で利用した正規表現
@@ -412,7 +412,7 @@ LIMIT 10
 ---
 > S-016: 店舗データ（store）から、電話番号（tel_no）が3桁-3桁-4桁のデータを全項目表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT *
@@ -423,7 +423,7 @@ WHERE regexp_like(status_cd, '^[0-9]{3}-[0-9]{3}-[0-9]{4}$')
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - S-013と同様
 - 本問題で利用した正規表現
@@ -435,7 +435,7 @@ WHERE regexp_like(status_cd, '^[0-9]{3}-[0-9]{3}-[0-9]{4}$')
 ---
 > S-017: 顧客データ（customer）を生年月日（birth_day）で高齢順にソートし、先頭から全項目を10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT * 
@@ -447,7 +447,7 @@ Limit 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - ORDER BY <カラム> [ASC|DESC]: <カラム>の順に並び替え
     - ASC（デフォルト）: 昇順
@@ -458,7 +458,7 @@ Limit 10
 ---
 > S-018: 顧客データ（customer）を生年月日（birth_day）で若い順にソートし、先頭から全項目を10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT * 
@@ -470,7 +470,7 @@ Limit 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - S-013とS-017と同様
 
@@ -480,7 +480,7 @@ Limit 10
 > S-019: レシート明細データ（receipt）に対し、1件あたりの売上金額（amount）が高い順にランクを付与し、先頭から10件表示せよ。項目は顧客ID（customer_id）、売上金額（amount）、付与したランクを表示させること。なお、売上金額（amount）が等しい場合は同一順位を付与するものとする。
 >
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -495,7 +495,7 @@ Limit 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - RANK関数
     - RANK()
@@ -510,7 +510,7 @@ Limit 10
 > S-020: レシート明細データ（receipt）に対し、1件あたりの売上金額（amount）が高い順にランクを付与し、先頭から10件表示せよ。項目は顧客ID（customer_id）、売上金額（amount）、付与したランクを表示させること。なお、売上金額（amount）が等しい場合でも別順位を付与すること。
 
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -524,7 +524,7 @@ Limit 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - ROW_NUMBER()
     - WINDOW関数の一種
@@ -537,7 +537,7 @@ Limit 10
 ## S-021〜S-030
 > S-021: レシート明細データ（receipt）に対し、件数をカウントせよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -548,7 +548,7 @@ FROM "sql_knocks"."receipt"
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - count()
     - 集計関数の一種。集計関数とは、レコード全体の値を用いて集計を行い、集計結果を返す関数
@@ -559,7 +559,7 @@ FROM "sql_knocks"."receipt"
 ---
 > S-022: レシート明細データ（receipt）の顧客ID（customer_id）に対し、ユニーク件数をカウントせよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -570,7 +570,7 @@ FROM "sql_knocks"."receipt"
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - S-021と同様
 - ユニーク数（重複を排除したレコード件数）を求める場合は、`DISTINCT `を引数として入力する
@@ -580,7 +580,7 @@ FROM "sql_knocks"."receipt"
 ---
 > S-023: レシート明細データ（receipt）に対し、店舗コード（store_cd）ごとに売上金額（amount）と売上数量（quantity）を合計せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -594,7 +594,7 @@ GROUP BY store_cd
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - sum()
     - 集計関数の一種。
@@ -610,7 +610,7 @@ GROUP BY store_cd
 ---
 > S-024: レシート明細データ（receipt）に対し、顧客ID（customer_id）ごとに最も新しい売上年月日（sales_ymd）を求め、10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -624,7 +624,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - max()
     - 集計関数の一種。
@@ -635,7 +635,7 @@ LIMIT 10
 ---
 > S-025: レシート明細データ（receipt）に対し、顧客ID（customer_id）ごとに最も古い売上年月日（sales_ymd）を求め、10件表示せよ。
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -649,7 +649,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - min()
     - 集計関数の一種
@@ -660,7 +660,7 @@ LIMIT 10
 ---
 > S-026: レシート明細データ（receipt）に対し、顧客ID（customer_id）ごとに最も新しい売上年月日（sales_ymd）と古い売上年月日を求め、両者が異なるデータを10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -677,7 +677,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
  - HAVING
      - 集計関数（maxやminなど）の結果を用いた絞り込みを行う
@@ -689,7 +689,7 @@ LIMIT 10
 ---
 > S-027: レシート明細データ（receipt）に対し、店舗コード（store_cd）ごとに売上金額（amount）の平均を計算し、降順でTOP5を表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -704,7 +704,7 @@ LIMIT 5
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - avg
     - 集計関数の一種
@@ -715,7 +715,7 @@ LIMIT 5
 ---
 > S-028: レシート明細データ（receipt）に対し、店舗コード（store_cd）ごとに売上金額（amount）の中央値を計算し、降順でTOP5を表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -730,7 +730,7 @@ LIMIT 5
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - prestoにはMEDIAN（中央値を計算する）関数が無いので、`APPROX_PERCENTILE（0.5）`を用いる
     - `APPROX_PERCENTILE`
@@ -743,7 +743,7 @@ LIMIT 5
 ---
 > S-029: レシート明細データ（receipt）に対し、店舗コード（store_cd）ごとに商品コード（product_cd）の最頻値を求め、10件表示させよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 -- 店舗コードかつ商品コードごとの明細の出現数を算出
@@ -783,7 +783,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - WITH
     - サブクエリの結果にテーブル名を付けられる構文。
@@ -804,7 +804,7 @@ LIMIT 10
 ---
 > S-030: レシート明細データ（receipt）に対し、店舗コード（store_cd）ごとに売上金額（amount）の分散を計算し、降順で5件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -819,7 +819,7 @@ LIMIT 5
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - var_samp
     - 集計関数の一種
@@ -831,7 +831,7 @@ LIMIT 5
 ## S-031〜S-040
 > S-031: レシート明細データ（receipt）に対し、店舗コード（store_cd）ごとに売上金額（amount）の標準偏差を計算し、降順で5件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -846,7 +846,7 @@ LIMIT 5
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - stddev_pop
     - 集計関数の一種
@@ -859,7 +859,7 @@ LIMIT 5
 
 > S-032: レシート明細データ（receipt）の売上金額（amount）について、25％刻みでパーセンタイル値を求めよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -875,7 +875,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - パーセンタイル（四分位）計算はAPPROX_PERCENTILEで行う
 - 四分位数とは、データを小さい順に並べたときに、そのデータの数で4等分した区切り値(25％、50%、75%)を指す
@@ -885,7 +885,7 @@ LIMIT 10
 ---
 > S-033: レシート明細データ（receipt）に対し、店舗コード（store_cd）ごとに売上金額（amount）の平均を計算し、330以上のものを抽出せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -900,7 +900,7 @@ HAVING
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - HAVING
     - 集計関数（maxやminなど）の結果を用いた絞り込みを行う
@@ -916,7 +916,7 @@ HAVING
 ---
 > S-034: レシート明細データ（receipt）に対し、顧客ID（customer_id）ごとに売上金額（amount）を合計して全顧客の平均を求めよ。ただし、顧客IDが"Z"から始まるものは非会員を表すため、除外して計算すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH customer_amount AS (
@@ -936,7 +936,7 @@ FROM customer_amount
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 集計値（合計）の集計（平均）を算出するにあたり、サブクエリで分割
     - サブクエリはWITHが便利
@@ -946,7 +946,7 @@ FROM customer_amount
 ---
 > S-035: レシート明細データ（receipt）に対し、顧客ID（customer_id）ごとに売上金額（amount）を合計して全顧客の平均を求め、平均以上に買い物をしている顧客を抽出し、10件表示せよ。ただし、顧客IDが"Z"から始まるものは非会員を表すため、除外して計算すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH customer_amount AS (
@@ -974,7 +974,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 2段階に分けて考える
     1. 顧客毎の売上金額合計を算出
@@ -985,7 +985,7 @@ LIMIT 10
 ---
 > S-036: レシート明細データ（receipt）と店舗データ（store）を内部結合し、レシート明細データの全項目と店舗データの店舗名（store_name）を10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1000,7 +1000,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 内部結合：INNER JOIN
     - 左右どちらにも結合キー（ONで指定）の値が存在するレコードのみ取得
@@ -1010,7 +1010,7 @@ LIMIT 10
 ---
 > S-037: 商品データ（product）とカテゴリデータ（category）を内部結合し、商品データの全項目とカテゴリデータのカテゴリ小区分名（category_small_name）を10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1025,7 +1025,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 特になし
 
@@ -1034,7 +1034,7 @@ LIMIT 10
 ---
 > S-038: 顧客データ（customer）とレシート明細データ（receipt）から、顧客ごとの売上金額合計を求め、10件表示せよ。ただし、売上実績がない顧客については売上金額を0として表示させること。また、顧客は性別コード（gender_cd）が女性（1）であるものを対象とし、非会員（顧客IDが"Z"から始まるもの）は除外すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH customer_amount AS (
@@ -1066,7 +1066,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 左外部結合：LEFT (OUTER) JOIN
     - 左テーブルの結合キー値が右テーブルに存在しない場合、レコードは取得し、右テーブルの値をnullで返す
@@ -1080,7 +1080,7 @@ LIMIT 10
 ---
 > S-039: レシート明細データ（receipt）から、売上日数の多い顧客の上位20件を抽出したデータと、売上金額合計の多い顧客の上位20件を抽出したデータをそれぞれ作成し、さらにその2つを完全外部結合せよ。ただし、非会員（顧客IDが"Z"から始まるもの）は除外すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH customer_data AS (
@@ -1121,7 +1121,7 @@ ON d.customer_id = a.customer_id
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - WITH customer_data
     - `FROM "sql_knocks"."receipt" WHERE customer_id NOT LIKE 'Z%'`をcustomer_daysでもcustomer_amountでも利用する為、customer_dataとして別出ししている
@@ -1136,7 +1136,7 @@ ON d.customer_id = a.customer_id
 ---
 > S-040: 全ての店舗と全ての商品を組み合わせたデータを作成したい。店舗データ（store）と商品データ（product）を直積し、件数を計算せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1148,7 +1148,7 @@ CROSS JOIN "sql_knocks"."product"
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 直積：CROSS JOIN
     - 左右のテーブルを総当たりで結合する
@@ -1160,7 +1160,7 @@ CROSS JOIN "sql_knocks"."product"
 > S-041: レシート明細データ（receipt）の売上金額（amount）を日付（sales_ymd）ごとに集計し、前回売上があった日からの売上金額増減を計算せよ。そして結果を10件表示せよ。
 >
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sales_amount_by_date AS (
@@ -1192,7 +1192,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - LAG関数
     - 指定したカラム前の行のデータが得られる
@@ -1205,7 +1205,7 @@ LIMIT 10
 ---
 > S-042: レシート明細データ（receipt）の売上金額（amount）を日付（sales_ymd）ごとに集計し、各日付のデータに対し、前回、前々回、3回前に売上があった日のデータを結合せよ。そして結果を10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 -- コード例1:縦持ちケース
@@ -1281,7 +1281,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - S-041を参照
 
@@ -1308,7 +1308,7 @@ LIMIT 10
 ---
 > S-045: 顧客データ（customer）の生年月日（birth_day）は日付型でデータを保有している。これをYYYYMMDD形式の文字列に変換し、顧客ID（customer_id）とともに10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1321,7 +1321,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
  
  - date_format
      - 日付関数の一種
@@ -1335,7 +1335,7 @@ LIMIT 10
 ---
 > S-046: 顧客データ（customer）の申し込み日（application_date）はYYYYMMDD形式の文字列型でデータを保有している。これを日付型に変換し、顧客ID（customer_id）とともに10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -1348,7 +1348,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - date
     - 文字列をdate型に変換する
@@ -1362,7 +1362,7 @@ LIMIT 10
 ---
 > S-047: レシート明細データ（receipt）の売上日（sales_ymd）はYYYYDD形式の数値型でデータを保有している。これを日付型に変換し、レシート番号(receipt_no)、レシートサブ番号（receipt_sub_no）とともに10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT  
@@ -1376,7 +1376,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - CAST
     - 引数で指定したデータ型に変換する
@@ -1387,7 +1387,7 @@ LIMIT 10
 ---
 > S-048: レシート明細データ（receipt）の売上エポック秒（sales_epoch）は数値型のUNIX秒でデータを保有している。これを日付型に変換し、レシート番号(receipt_no)、レシートサブ番号（receipt_sub_no）とともに10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1401,7 +1401,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - UNIX時間
     - UTC時刻における1970年1月1日午前0時0分0秒（UNIXエポック）からの経過秒数を計算したもの
@@ -1413,7 +1413,7 @@ LIMIT 10
 ---
 > S-049: レシート明細データ（receipt）の売上エポック秒（sales_epoch）を日付型に変換し、「年」だけ取り出してレシート番号(receipt_no)、レシートサブ番号（receipt_sub_no）とともに10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -1427,7 +1427,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
  - date_format
      - 日付関数の一種
@@ -1441,7 +1441,7 @@ LIMIT 10
 ---
 > S-050: レシート明細データ（receipt）の売上エポック秒（sales_epoch）を日付型に変換し、「月」だけ取り出してレシート番号(receipt_no)、レシートサブ番号（receipt_sub_no）とともに10件表示せよ。なお、「月」は0埋め2桁で取り出すこと。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -1455,7 +1455,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - lpad
     - 指定した桁数になるまで文字列の左側に文字列を埋め込む。
@@ -1465,7 +1465,7 @@ LIMIT 10
 ## S-051〜S-060
 > S-051: レシート明細データ（receipt）の売上エポック秒を日付型に変換し、「日」だけ取り出してレシート番号(receipt_no)、レシートサブ番号（receipt_sub_no）とともに10件表示せよ。なお、「日」は0埋め2桁で取り出すこと。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -1478,7 +1478,7 @@ FROM "sql_knocks"."receipt" LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 特になし
 
@@ -1488,7 +1488,7 @@ FROM "sql_knocks"."receipt" LIMIT 10
 ---
 > S-052: レシート明細データ（receipt）の売上金額（amount）を顧客ID（customer_id）ごとに合計の上、売上金額合計に対して2,000円以下を0、2,000円より大きい金額を1に二値化し、顧客ID、売上金額合計とともに10件表示せよ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1507,7 +1507,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - CASE
     - 条件分岐
@@ -1520,7 +1520,7 @@ LIMIT 10
 ---
 > S-053: 顧客データ（customer）の郵便番号（postal_cd）に対し、東京（先頭3桁が100〜209のもの）を1、それ以外のものを0に二値化せよ。さらにレシート明細データ（receipt）と結合し、全期間において売上実績のある顧客数を、作成した二値ごとにカウントせよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH cust AS (
@@ -1551,11 +1551,11 @@ GROUP BY c.postal_flg
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
-- USING（[本家の回答](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/answer/ans_preprocess_knock_SQL.html)で使ってるので踏襲）
+- USING（[本家のsql](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/answer/ans_preprocess_knock_SQL.html)で使ってるので踏襲）
     - 結合列を明示的に指定してSQL文をわかりやすくしたい場合に使用
-    - リファレンスの一つとして本家の回答を翻訳した
+    - リファレンスの一つとして本家のsqlを翻訳した
 
 </div></details>
 
@@ -1563,7 +1563,7 @@ GROUP BY c.postal_flg
 ---
 > S-054: 顧客データ（customer）の住所（address）は、埼玉県、千葉県、東京都、神奈川県のいずれかとなっている。都道府県毎にコード値を作成し、顧客ID、住所とともに10件表示せよ。値は埼玉県を11、千葉県を12、東京都を13、神奈川県を14とすること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 -- 正規表現を用いるケース
@@ -1601,7 +1601,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - regexp_extract
     - 正規表現関数
@@ -1617,7 +1617,7 @@ LIMIT 10
 > - 第2四分位以上第3四分位未満 ・・・ 3を付与
 > - 第3四分位以上 ・・・ 4を付与
 
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sales_amount AS(
@@ -1654,7 +1654,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - パーセンタイル（四分位）計算はAPPROX_PERCENTILEで行う
 - 四分位数とは、データを小さい順に並べたときに、そのデータの数で4等分した区切り値(25％、50%、75%)を指す
@@ -1665,7 +1665,7 @@ LIMIT 10
 ---
 > S-056: 顧客データ（customer）の年齢（age）をもとに10歳刻みで年代を算出し、顧客ID（customer_id）、生年月日（birth_day）とともに10件表示せよ。ただし、60歳以上は全て60歳代とすること。年代を表すカテゴリ名は任意とする。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1681,7 +1681,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - prestoはint型同士の計算結果はint型になるので、その仕組みを利用
     - 逆に少数にしたい場合は、* 1.0等で小数点型に暗黙的にCASTしてから計算する
@@ -1695,7 +1695,7 @@ LIMIT 10
 ---
 > S-057: 056の抽出結果と性別コード（gender_cd）により、新たに性別×年代の組み合わせを表すカテゴリデータを作成し、10件表示せよ。組み合わせを表すカテゴリの値は任意とする。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 -- 性別コード１桁と年代コード２桁を連結した性年代コードを生成する
@@ -1710,7 +1710,7 @@ FROM
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - `||`
     - 連結関数
@@ -1723,7 +1723,7 @@ FROM
 ---
 > S-058: 顧客データ（customer）の性別コード（gender_cd）をダミー変数化し、顧客ID（customer_id）とともに10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 -- カテゴリ数が多いときはとても長いSQLとなってしまう点に注意
@@ -1741,7 +1741,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - ダミー変数化の関数は見つからなかった。カスタム関数等で存在する可能性はある。
 
@@ -1751,7 +1751,7 @@ LIMIT 10
 ---
 > S-059: レシート明細データ（receipt）の売上金額（amount）を顧客ID（customer_id）ごとに合計し、売上金額合計を平均0、標準偏差1に"標準化して顧客ID、売上金額合計とともに10件表示せよ。標準化に使用する標準偏差は、分散の平方根、もしくは不偏分散の平方根のどちらでも良いものとする。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sales_amount AS(
@@ -1780,7 +1780,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 標準化
     - 「平均を0，分散を1とするスケーリング手法」
@@ -1793,7 +1793,7 @@ LIMIT 10
 ---
 > S-060: レシート明細データ（receipt）の売上金額（amount）を顧客ID（customer_id）ごとに合計し、売上金額合計を最小値0、最大値1に正規化して顧客ID、売上金額合計とともに10件表示せよ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sales_amount AS(
@@ -1825,7 +1825,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 正規化
     - 「最小値を0，最大値を1とする0-1スケーリング手法」
@@ -1836,7 +1836,7 @@ LIMIT 10
 ## S-061〜S-070
 > S-061: レシート明細データ（receipt）の売上金額（amount）を顧客ID（customer_id）ごとに合計し、売上金額合計を常用対数化（底10）して顧客ID、売上金額合計とともに10件表示せよ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1860,7 +1860,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - prestoで常用対数を算出する関数はLOG10である
 - 常用対数
@@ -1872,7 +1872,7 @@ LIMIT 10
 ---
 > S-062: レシート明細データ（receipt）の売上金額（amount）を顧客ID（customer_id）ごとに合計し、売上金額合計を自然対数化（底e）して顧客ID、売上金額合計とともに10件表示せよ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算すること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sum_amount_tbl AS (
@@ -1897,7 +1897,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - prestoで常用対数を算出する関数はLNである
 - 自然対数（LN）
@@ -1909,7 +1909,7 @@ LIMIT 10
 ---
 > S-063: 商品データ（product）の単価（unit_price）と原価（unit_cost）から各商品の利益額を算出し、結果を10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1925,7 +1925,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 利益額＝単価ー原価
 
@@ -1934,7 +1934,7 @@ LIMIT 10
 ---
 > S-064: 商品データ（product）の単価（unit_price）と原価（unit_cost）から、各商品の利益率の全体平均を算出せよ。ただし、単価と原価には欠損が生じていることに注意せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -1947,7 +1947,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - Prestoは整数型 / 整数型 = 整数型となる
     - なので、小数点型である1.0を事前に掛ける事で小数点型に暗黙的にcastする
@@ -1957,7 +1957,7 @@ LIMIT 10
 ---
 > S-065: 商品データ（product）の各商品について、利益率が30%となる新たな単価を求めよ。ただし、1円未満は切り捨てること。そして結果を10件表示させ、利益率がおよそ30％付近であることを確認せよ。ただし、単価（unit_price）と原価（unit_cost）には欠損が生じていることに注意せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH new_price_tbl AS (
@@ -1980,7 +1980,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - FLOOR(col)
     - 小数点以下の数値を最も近い整数に切り捨てて返す。
@@ -1990,7 +1990,7 @@ LIMIT 10
 ---
 > S-066: 商品データ（product）の各商品について、利益率が30%となる新たな単価を求めよ。今回は、1円未満を丸めること（四捨五入または偶数への丸めで良い）。そして結果を10件表示させ、利益率がおよそ30％付近であることを確認せよ。ただし、単価（unit_price）と原価（unit_cost）には欠損が生じていることに注意せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH new_price_tbl AS (
@@ -2013,7 +2013,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - ROUND
     - 指定した桁数まで表示するように四捨五入する関数
@@ -2023,7 +2023,7 @@ LIMIT 10
 ---
 > S-067: 商品データ（product）の各商品について、利益率が30%となる新たな単価を求めよ。今回は、1円未満を切り上げること。そして結果を10件表示させ、利益率がおよそ30％付近であることを確認せよ。ただし、単価（unit_price）と原価（unit_cost）には欠損が生じていることに注意せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH new_price_tbl AS (
@@ -2046,7 +2046,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - CEIL
     - 小数点以下の数値を最も近い整数に切り上げて返す。
@@ -2056,7 +2056,7 @@ LIMIT 10
 ---
 > S-068: 商品データ（product）の各商品について、消費税率10％の税込み金額を求めよ。1円未満の端数は切り捨てとし、結果を10件表示せよ。ただし、単価（unit_price）には欠損が生じていることに注意せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT
@@ -2071,7 +2071,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 
 
@@ -2080,7 +2080,7 @@ LIMIT 10
 ---
 > S-069: レシート明細データ（receipt）と商品データ（product）を結合し、顧客毎に全商品の売上金額合計と、カテゴリ大区分コード（category_major_cd）が"07"（瓶詰缶詰）の売上金額合計を計算の上、両者の比率を求めよ。抽出対象はカテゴリ大区分コード"07"（瓶詰缶詰）の売上実績がある顧客のみとし、結果を10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 -- 顧客ごとの売り上げ合計
@@ -2119,7 +2119,7 @@ LIMIT 10;
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 「顧客ごとの売上合計」と「顧客ごとの”商品カテゴリ07”の売上合計」は集計対象の母数が変わるので、別々のサブクエリで集計する
     - 一見、sum(条件)で絞り込めそうだが出来ない
@@ -2132,7 +2132,7 @@ LIMIT 10;
 ---
 > S-070: レシート明細データ（receipt）の売上日（sales_ymd）に対し、顧客データ（customer）の会員申込日（application_date）からの経過日数を計算し、顧客ID（customer_id）、売上日、会員申込日とともに10件表示せよ（sales_ymdは数値、application_dateは文字列でデータを保持している点に注意）。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH receipt_distinct AS (
@@ -2155,7 +2155,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - date_diff
     - 第一引数に`day`を指定することで2つの日付の間の日数を計算する。
@@ -2166,7 +2166,7 @@ LIMIT 10
 
 > S-071: レシート明細データ（receipt）の売上日（sales_ymd）に対し、顧客データ（customer）の会員申込日（application_date）からの経過月数を計算し、顧客ID（customer_id）、売上日、会員申込日とともに10件表示せよ（sales_ymdは数値、application_dateは文字列でデータを保持している点に注意）。1ヶ月未満は切り捨てること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH receipt_distinct AS (
@@ -2192,7 +2192,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - date_diff
     - 第一引数に`month`を指定することで2つの日付の間の月数を計算する。
@@ -2204,7 +2204,7 @@ LIMIT 10
 ---
 > S-072: レシート明細データ（receipt）の売上日（sales_ymd）に対し、顧客データ（customer）の会員申込日（application_date）からの経過年数を計算し、顧客ID（customer_id）、売上日、会員申込日とともに10件表示せよ（sales_ymdは数値、application_dateは文字列でデータを保持している点に注意）。1年未満は切り捨てること。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH receipt_distinct AS (
@@ -2230,7 +2230,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - - date_diff
     - 第一引数に`year`を指定することで2つの日付の間の年数を計算する。
@@ -2242,7 +2242,7 @@ LIMIT 10
 ---
 > S-073: レシート明細データ（receipt）の売上日（sales_ymd）に対し、顧客データ（customer）の会員申込日（application_date）からのエポック秒による経過時間を計算し、顧客ID（customer_id）、売上日、会員申込日とともに10件表示せよ（なお、sales_ymdは数値、application_dateは文字列でデータを保持している点に注意）。なお、時間情報は保有していないため各日付は0時0分0秒を表すものとする。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH receipt_distinct AS (
@@ -2268,7 +2268,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - date_diff
     - 第一引数に`second`を指定することで2つの日付の間の秒数を計算する。
@@ -2280,7 +2280,7 @@ LIMIT 10
 ---
 > S-074: レシート明細データ（receipt）の売上日（sales_ymd）に対し、当該週の月曜日からの経過日数を計算し、売上日、直前の月曜日付とともに10件表示せよ（sales_ymdは数値でデータを保持している点に注意）。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 -- 当日日付
@@ -2310,7 +2310,7 @@ limit 10;
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - day_of_week
     - 月曜日は1、火曜日は2、水曜日は3….と返す
@@ -2325,7 +2325,7 @@ limit 10;
 ---
 > S-075: 顧客データ（customer）からランダムに1%のデータを抽出し、先頭から10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT * 
@@ -2362,7 +2362,7 @@ LIMIT 10
 ```
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - TABLESAMPLE BERNOULLI()
     - 抽出割合に若干の誤差は出る
@@ -2382,7 +2382,7 @@ LIMIT 10
 ---
 > S-076: 顧客データ（customer）から性別コード（gender_cd）の割合に基づきランダムに10%のデータを層化抽出し、性別コードごとに件数を集計せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sample AS (
@@ -2435,7 +2435,7 @@ GROUP BY gender_cd
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - ARRAY_AGG
     - 指定した行を集約して配列にする
@@ -2449,7 +2449,7 @@ GROUP BY gender_cd
 ---
 > S-077: レシート明細データ（receipt）の売上金額を顧客単位に合計し、合計した売上金額の外れ値を抽出せよ。なお、外れ値は売上金額合計を対数化したうえで平均と標準偏差を計算し、その平均から3σを超えて離れたものとする（自然対数と常用対数のどちらでも可）。結果は10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sales_amount AS(
@@ -2479,7 +2479,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - なぜ対数を使うのか
     - 正しく外れ値を検出するため
@@ -2491,7 +2491,7 @@ LIMIT 10
 ---
 > S-078: レシート明細データ（receipt）の売上金額（amount）を顧客単位に合計し、合計した売上金額の外れ値を抽出せよ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算すること。なお、ここでは外れ値を第1四分位と第3四分位の差であるIQRを用いて、「第1四分位数-1.5×IQR」を下回るもの、または「第3四分位数+1.5×IQR」を超えるものとする。結果は10件表示せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 WITH sales_amount AS (
@@ -2521,7 +2521,7 @@ LIMIT 10
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 - 特になし
 
@@ -2532,7 +2532,7 @@ LIMIT 10
 ---
 > S-079: 商品データ（product）の各項目に対し、欠損数を確認せよ。
 >
-<details><summary>回答</summary><div>
+<details><summary>sql</summary><div>
 
 ```sql:sql
 SELECT 
@@ -2548,7 +2548,7 @@ FROM "sql_knocks"."product"
 
 </div></details>
 
-<details><summary>メモ</summary><div>
+<details><summary>note</summary><div>
 
 -　IF
     -   IF(col1 = value1,true_result,false_result)
