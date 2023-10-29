@@ -2,25 +2,35 @@
 [データサイエンス100本ノック(構造化データ加工編)](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess)
 
 ## Learning environment
-Query at Amazon Athena.
-1, [create the database by these CSV files](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)
-（database name：`receipt-data-for-sql_training`）
-
-2, [how to set the table with csv in S3](https://dev.classmethod.jp/articles/glue-crawler-athena-tutorial/)
-3, (AWS Glue databases)[https://docs.aws.amazon.com/glue/latest/dg/define-database.html]
+Query at Amazon Athena.<br>
+1, [create the database by these CSV files](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)<br>
+（database name：`receipt-data-for-sql_training`）<br>
+2, [how to set the table with csv in S3](https://dev.classmethod.jp/articles/glue-crawler-athena-tutorial/)<br>
+3, (AWS Glue databases)[https://docs.aws.amazon.com/glue/latest/dg/define-database.html]<br>
 
  **notes**
-Crawler：　Data types of some columns need to be modified to the specifications as in the diagram.
+Crawler：　Data types of some columns need to be modified to the specifications. so create table by Athena query<br>
 
+```sql
+CREATE EXTERNAL TABLE IF NOT EXISTS `YOUR S3 BUCKET`.`YOUR FOLDER` (
+  `column1` string,
+  `column2` string,
+  `column3` string,
+  `column4` string,
+  `column5` string,
+  `column6` string,
+  `column7` string,
+  `column8` string,
+  `column9` string,
 
-| table | column | before | after |
-| --- | --- | --- | --- |
-| customer | birth_day | string | date |
-| category、product | category_major_cd | bigint | string |
-| category、product | category_medium_cd | bigint | string |
-| category、product | category_small_cd | bigint | string |
-|  store | prefecture_cd | bigint | string |
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES ('field.delim' = ',')
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION 's3://YOUR S3 BUCKET/YOUR FOLDER/'
+TBLPROPERTIES ('classification' = 'csv', "skip.header.line.count"="1");
 
+```
 
 ## ER diagram
 <img width="1469" alt="スクリーンショット 2023-10-27 21 55 21" src="https://github.com/seiji1997/SQL/assets/72504808/f7bf42ec-cb8c-4a06-a46e-8eb5e6259f15">
