@@ -8,19 +8,19 @@ change your own `YOUR S3 BUCKET` and `YOUR FOLDER`.
 `YOUR S3 BUCKET`.`YOUR FOLDER`
 ```
 
-### Numeric Types
+### Numeric Types
 > Integer (true) INTEGER, INT, SMALLINT, TINYINT, MEDIUMINT, BIGINT<br>
 > Fixed-point (true) DECIMAL, NUMERIC<br>
 > Floating-point types (approximate numbers) FLOAT, DOUBLE<br>
 > Bit value type BIT<br>
 
 
-### List of date and time types
+### List of date and time types
 > DATE, DATETIME, and TIMESTAMP types<br>
 > TIME type<br>
 > YEAR type<br>
 
-### List of string types
+### List of string types
 > CHAR and VARCHAR types<br>
 > BINARY and VARBINARY types<br>
 > BLOB and TEXT types<br>
