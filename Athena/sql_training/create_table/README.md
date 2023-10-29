@@ -1,7 +1,7 @@
 # SQL
 
  **notes**
-Crawler：　Data types of some columns need to be modified to the specifications. So create table by Athena query<be>
+Crawler：　Data types of some columns need to be modified to the specifications. So create table by Athena query<br>
 （database name：`receipt-data-for-sql_training`）<br>
 change your own `DATABASE`.`TABLE` AND `YOUR S3 BUCKET`/`YOUR FOLDER`.
 ```
