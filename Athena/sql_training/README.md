@@ -1,5 +1,5 @@
 # SQL
-[データサイエンス100本ノック(構造化データ加工編)](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess)
+[data science 100 knock(structured data processing section)](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess)
 
 ## Learning environment
 Query at Amazon Athena.<br>
