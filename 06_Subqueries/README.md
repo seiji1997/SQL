@@ -1,8 +1,11 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## Subqueries
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
-
-
+A subquery is a query within a query. The subquery is executed first, and the main query uses the result of the subquery.
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+(SELECT column_name FROM table_name WHERE condition);
+```
