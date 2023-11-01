@@ -1,8 +1,43 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## Aggregate Functions
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
+### COUNT
+The COUNT() function returns the number of rows that matches a specified criteria.
+```sql
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+```
 
+### SUM
+The SUM() function returns the total sum of a numeric column.
+```sql
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+```
 
+### AVG
+The AVG() function returns the average value of a numeric column.
+```sql
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+```
+
+### MIN
+The MIN() function returns the smallest value of the selected column.
+```sql
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+```
+
+### MAX
+The MAX() function returns the largest value of the selected column.
+```sql
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+```
