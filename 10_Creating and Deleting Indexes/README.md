@@ -1,8 +1,16 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## Creating and Deleting Indexes
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
+### CREATE INDEX
+The CREATE INDEX statement is used to create an index (search key) on a table.
+```sql
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+```
 
-
+### DROP INDEX
+The DROP INDEX statement is used to delete an index.
+```sql
+DROP INDEX index_name ON table_name;
+```
