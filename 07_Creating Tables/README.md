@@ -1,8 +1,36 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## Creating Tables
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
+### CREATE TABLE
+The CREATE TABLE statement is used to create a new table in a database.
+```sql
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+```
 
+### ALTER TABLE
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
 
+```sql
+ALTER TABLE table_name
+ADD column_name datatype;
+```
+```sql
+ALTER TABLE table_name
+DROP COLUMN column_name;
+```
+```sql
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype;
+```
+
+### DROP TABLE
+The DROP TABLE statement is used to delete a table.
+```sql
+DROP TABLE table_name;
+```
