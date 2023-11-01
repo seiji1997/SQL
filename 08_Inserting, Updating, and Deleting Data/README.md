@@ -1,8 +1,24 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## Inserting, Updating, and Deleting Data
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
+### INSERT INTO
+The INSERT INTO statement is used to insert new records in a table.
+```sql
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value, ...);
+```
 
+### UPDATE
+The UPDATE statement is used to modify the existing records in a table.
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
 
+### DELETE
+The DELETE statement is used to delete existing records in a table.
+```sql
+DELETE FROM table_name WHERE condition;
+```
