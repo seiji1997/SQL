@@ -1,8 +1,22 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## Grouping Data
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
+### GROUP BY
+The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of citizens in each country".
+```sql
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name;
+```
 
-
+### HAVING
+The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+```sql
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name
+HAVING aggregate_function(column_name) operator value;
+```
