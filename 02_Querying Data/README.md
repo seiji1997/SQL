@@ -1,8 +1,52 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## overview
+### SELECT
+The SELECT statement is used to query the database. It is the most common command in SQL.<br>
+```sql
+SELECT column1, column2, ...
+FROM table_name;
+```
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
+### WHERE
+The WHERE clause is used to filter records.<br>
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+### AND & OR
+The AND and OR operators are used to filter records based on more than one condition.
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 AND condition2 AND ...;
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 OR condition2 OR ...;
+```
+### ORDER BY
+
+
+### NULL CHECKING
+
+
+### DISTINCT
+
+
+### DATE
+
+
+### BETWEEN
+
+
+### LIKE
+
+
+### IN
+
+
+### ALIAS
 
 
