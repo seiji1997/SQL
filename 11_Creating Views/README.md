@@ -1,8 +1,20 @@
 # SQL
 
-### study plan 2023/10/1 - 2024/12/31
-- 1 [Complete SQL and Databases Bootcamp: Zero to Mastery [2023]](https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/learn/lecture/21449296?start=1#overview)
+## Creating Views
 
-- 2 [The Complete SQL Bootcamp: Go from Zero to Hero](https://www.udemy.com/course/the-complete-sql-bootcamp/)
+A view is a virtual table based on the result set of an SQL statement.
 
+### CREATE VIEW
+The CREATE VIEW statement is used to create a view.
+```sql
+CREATE VIEW view_name AS
+SELECT column_name(s)
+FROM table_name
+WHERE condition;
+```
 
+### DROP VIEW
+The DROP VIEW statement is used to delete a view.
+```sql
+DROP VIEW view_name;
+```
