@@ -18,9 +18,12 @@ WHERE condition;
 ### AND & OR
 The AND and OR operators are used to filter records based on more than one condition.
 ```sql
+-- and
 SELECT column1, column2, ...
 FROM table_name
 WHERE condition1 AND condition2 AND ...;
+
+-- or
 SELECT column1, column2, ...
 FROM table_name
 WHERE condition1 OR condition2 OR ...;
