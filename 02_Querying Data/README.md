@@ -1,6 +1,5 @@
 # SQL
 
-## overview
 ### SELECT
 The SELECT statement is used to query the database. It is the most common command in SQL.<br>
 ```sql
