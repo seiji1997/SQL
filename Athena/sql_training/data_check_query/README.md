@@ -114,19 +114,21 @@ with tbl1 as(
    , "category_small_cd"
    , "category_small_name"
    , count(1)
-   from "DATABASE"."TABLE"
+   from  "DATABASE"."TABLE"
    group by 1, 2, 3, 4, 5, 6
    having count(1) > 1
    order by 7
 )
 
-select tbl1, count(1) as error from tab1
+select 'tbl1' as check_list, count(1) as error from tbl1
 union all
-select tbl2, count(1) as error from tab2
+select 'tbl2' as check_list, count(1) as error from tbl2
 union all
-select tbl3, count(1) as error from tab3
+select 'tbl3' as check_list, count(1) as error from tbl3
 union all
-select tbl4, count(1) as error from tab4
+select 'tbl4' as check_list, count(1) as error from tbl4
+order by 1 asc
+
 ```
 
 
