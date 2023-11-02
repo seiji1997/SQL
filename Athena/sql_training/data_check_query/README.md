@@ -62,7 +62,7 @@ or
 
 ```
 
-### all in
+### all in
 
 ```sql
 with tbl1 as(
@@ -114,7 +114,7 @@ with tbl1 as(
    , "category_small_cd"
    , "category_small_name"
    , count(1)
-   from  "DATABASE"."TABLE"
+   from "DATABASE"."TABLE"
    group by 1, 2, 3, 4, 5, 6
    having count(1) > 1
    order by 7
@@ -127,9 +127,6 @@ union all
 select tbl3, count(1) as error from tab3
 union all
 select tbl4, count(1) as error from tab4
-
-
-
 ```
 
 
