@@ -2,16 +2,11 @@
 
 ## Wildcards
 
-### LIKE
-The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
-```sql
-SELECT column_name(s)
-FROM table_name
-WHERE column_name LIKE pattern;
-```
+### Hive, Presto
 
-### Wildcard Characters
-|Character|Description|
-|---|---|
-|%|	The percent sign represents zero, one, or multiple characters|
-|_|	The underscore represents a single character|
+https://docs.treasuredata.com/display/public/PD/Choosing+an+Analytics+Engine<br>
+
+https://docs.treasuredata.com/display/public/PD/About+Presto+Distributed+Query+Engine<br>
+
+https://docs.treasuredata.com/display/public/PD/About+Hive+Query+Engine<br>
+
