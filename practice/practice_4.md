@@ -16,8 +16,8 @@ FROM
         max(id)
       FROM
         items
-    ) AS id
-  ) gen
+    )
+  ) gen(id)
   LEFT OUTER JOIN items i ON gen.id = i.id
 WHERE
   i.id IS NULL;
@@ -46,8 +46,8 @@ FROM
         max(id)
       FROM
         items
-    ) AS id
-  ) gen
+    )
+  ) gen(id)
   LEFT OUTER JOIN items i ON gen.id = i.id
 WHERE
   i.id IS NULL;
@@ -95,8 +95,8 @@ FROM
         max(id)
       FROM
         items
-    ) AS id
-  ) gen
+    )
+  ) gen(id)
   LEFT OUTER JOIN items i ON gen.id = i.id
 WHERE
   i.id IS NULL;
@@ -113,3 +113,39 @@ WHERE
 ---
 
 このように、SQL文の実行結果やテーブルの変化を具体的に示すことで、理解が深まります。効率的な方法を採用することで、実際のデータベース操作のパフォーマンスも向上します。
+
+
+
+## 修正
+
+```sql
+# 修正前【generate_seriesの直接使用ver.】
+SELECT min(gen.id) AS absence
+FROM generate_series(1, (SELECT max(id) FROM items) AS id) gen
+LEFT OUTER JOIN items i ON gen.id = i.id
+WHERE i.id IS NULL;
+
+# 間違いの箇所: 修正前のコードは(SELECT max(id) FROM items)に対して、idと命名しているのが間違い
+# 理由: generate_seriesは(1, (SELECT max(id) FROM items))全体に対して機能する関数だから
+# 解決策: (SELECT max(id) FROM items)に命名するとgenerate_series内部エラーが出るので、(1, (SELECT max(id) FROM items))全体に対して命名する必要あり
+# 具体例: generate_seriesについて
+  # 引数: 開始値と終了値
+  # 機能: 範囲内の整数を生成
+  # 上記コードの問題点: 内部でエイリアスを設定しようとすると、generate_seriesが期待する引数の構造に合わないからエラー発生
+
+# 上記形式で修正する場合
+SELECT min(gen.id) AS absence
+FROM generate_series(1, (SELECT max(id) FROM items)) AS gen(id)
+LEFT OUTER JOIN items i ON gen.id = i.id
+WHERE i.id IS NULL;
+
+
+# サブクエリ使用ver.
+SELECT MIN(GEN.ID) AS ABSENCE
+FROM (
+    SELECT GENERATE_SERIES(1, (SELECT MAX(ID) FROM ITEMS)) AS ID
+) AS GEN
+LEFT OUTER JOIN ITEMS I ON GEN.ID = I.ID
+WHERE I.ID IS NULL;
+
+```
