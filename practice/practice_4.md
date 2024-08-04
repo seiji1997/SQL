@@ -129,8 +129,10 @@ WHERE i.id IS NULL;
 # 理由: generate_seriesは(1, (SELECT max(id) FROM items))全体に対して機能する関数だから
 # 解決策: (SELECT max(id) FROM items)に命名するとgenerate_series内部エラーが出るので、(1, (SELECT max(id) FROM items))全体に対して命名する必要あり
 # 具体例: generate_seriesについて
-  # 引数: 開始値と終了値
+  # 引数: (開始値, 終了値)
+      # 今回の例では、(1, (SELECT max(id) FROM items))
   # 機能: 範囲内の整数を生成
+      # 今回の例では、1からITEMSテーブルの最大IDまでの整数を生成
   # 上記コードの問題点: 内部でエイリアスを設定しようとすると、generate_seriesが期待する引数の構造に合わないからエラー発生
 
 # 上記形式で修正する場合
