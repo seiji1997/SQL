@@ -1,16 +1,7 @@
-
 # SQL テスト問題
 
 ## 問題6
-
-以下のSQL文を使用して `populations` テーブルの全人口の合計を取得してください。
-
-```sql
-SELECT
-  SUM(population) AS population
-FROM
-  populations;
-```
+`populations` テーブルの全人口の合計を取得してください。
 
 ## 解説
 

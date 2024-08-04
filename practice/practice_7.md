@@ -2,29 +2,8 @@
 # SQL テスト問題
 
 ## 問題7
-
-以下のSQL文を使用して `populations` テーブル、`prefectures` テーブル、`genders` テーブル、および `regions` テーブルを結合し、九州地方に属する各都道府県の性別ごとの人口を取得してください。
-
-```sql
-SELECT
-  pr.name AS prefecture,
-  s.name AS gender,
-  SUM(p.population) AS population
-FROM
-  populations p
-  INNER JOIN prefectures pr ON p.prefecture_code = pr.code
-  INNER JOIN genders s ON p.gender_code = s.code
-  INNER JOIN regions a ON pr.region_code = a.code
-GROUP BY
-  pr.code,
-  s.code,
-  a.code
-HAVING
-  a.name = '九州'
-ORDER BY
-  pr.code,
-  s.name DESC;
-```
+`populations` テーブル、`prefectures` テーブル、`genders` テーブル、および `regions` テーブルを結合し、<br>
+九州地方に属する各都道府県の性別ごとの人口を取得してください。
 
 ## 解説
 

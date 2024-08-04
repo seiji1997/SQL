@@ -3,31 +3,15 @@
 
 ## 問題4
 
-以下のSQL文を使用して `items` テーブルの `id` カラムに欠番がある場合、その最小の欠番を取得してください。
-
-```sql
-SELECT
-  min(gen.id) AS absence
-FROM
-  generate_series (
-    1,
-    (
-      SELECT
-        max(id)
-      FROM
-        items
-    )
-  ) gen(id)
-  LEFT OUTER JOIN items i ON gen.id = i.id
-WHERE
-  i.id IS NULL;
-```
+以下のSQL文を使用して `items` テーブルの `id` カラムに欠番がある場合、その最小の欠番を取得してください。<br>
+`generate_series` 関数と `LEFT OUTER JOIN` を使用して実現して下さい。
 
 ## 解説
 
 ### SQL文の読み解き方と考え方
 
-この問題では、`items` テーブルの `id` カラムに欠番がある場合、その最小の欠番を見つける必要があります。 `generate_series` 関数と `LEFT OUTER JOIN` を使用して実現します。
+この問題では、`items` テーブルの `id` カラムに欠番がある場合、その最小の欠番を見つける必要があります。<br>
+`generate_series` 関数と `LEFT OUTER JOIN` を使用して実現します。
 
 ### 各処理についての丁寧な解説
 
@@ -51,6 +35,13 @@ FROM
   LEFT OUTER JOIN items i ON gen.id = i.id
 WHERE
   i.id IS NULL;
+```
+
+```sql
+SELECT min(gen.id) AS absence
+FROM generate_series (1, (SELECT max(id) FROM items)) gen(id)
+LEFT OUTER JOIN items i ON gen.id = i.id
+WHERE i.id IS NULL;
 ```
 
 1. `generate_series(1, (SELECT max(id) FROM items) AS id) gen`:

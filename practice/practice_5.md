@@ -2,23 +2,14 @@
 # SQL テスト問題
 
 ## 問題5
-
-以下のSQL文を使用して `prefectures` テーブルと `regions` テーブルを結合し、各都道府県の所属する地域を取得してください。
-
-```sql
-SELECT
-  a.name AS region,
-  p.name AS prefecture
-FROM
-  prefectures p
-  INNER JOIN regions a ON p.region_code = a.code;
-```
+`prefectures` テーブルと `regions` テーブルを結合し、各都道府県の所属する地域を取得してください。
 
 ## 解説
 
 ### SQL文の読み解き方と考え方
 
-この問題では、`prefectures` テーブルと `regions` テーブルを結合し、各都道府県がどの地域に属しているかを取得する必要があります。 `INNER JOIN` を使用してこの情報を取得します。
+この問題では、`prefectures` テーブルと `regions` テーブルを結合し、各都道府県がどの地域に属しているかを取得する必要があります。<br>
+`INNER JOIN` を使用してこの情報を取得します。
 
 ### 各処理についての丁寧な解説
 

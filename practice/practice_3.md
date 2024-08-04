@@ -2,14 +2,7 @@
 # SQL テスト問題
 
 ## 問題3
-
-以下のSQL文を使用して `employees` テーブルから特定の条件に一致するデータを削除してください。
-
-```sql
-DELETE FROM employees
-WHERE
-  end_date <= '2013-03-31';
-```
+`employees` テーブルから `end_date` が `2013-03-31` 以下の条件に一致するデータを削除してください。
 
 ## 解説
 
