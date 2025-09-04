@@ -95,6 +95,70 @@
 
 ---
 
+
+# それぞれの“役割”
+
+## Snowflake × Crunchy（Snowflake Postgres）
+- **役割**：エンタープライズの既存本番 OLTP を、安全に Snowflake へ“持ち上げる”受け皿。  
+- **強み**：可用性・予測可能な運用・監査/権限（Horizon）・データ共有・Unistore/Hybrid Tables との親和性。  
+- **ねらい**：**統治一体化**（ガバナンス/監査/データ共有）を効かせつつ、分析やアプリ側と**同一平面**で回す。
+
+## Databricks × Neon（Lakebase + Serverless Postgres）
+- **役割**：新規アプリ/AI エージェント開発を“**サーバレス × ブランチング**”で**高速化**する実験と本番の土台。  
+- **強み**：ブランチ（COW）での**環境複製**、**スケール to ゼロ**、**Synced Tables（Snapshot/Triggered/Continuous）**で**ほぼリアルタイム同期**、Apps/LLM 統合。  
+- **ねらい**：**開発〜検証〜本番**の**短サイクル化**と、**AI を UI/業務動線に埋め込む**スピード最適化。
+
+---
+
+# それが達成されると、どんな世界観？
+
+## 1) “運用 → 分析 → AI → 運用”が一枚の床で回る
+- 取引（Postgres） → **数秒〜分**でレイクハウスへ同期 → 集計/特徴量/推論 → **結果が即アプリへ反映**。  
+- ダッシュボードで終わらず、**レコメンドや AI エージェント**がそのまま**画面・業務に常駐**。
+
+## 2) “移行の安心”と“開発の速さ”を両立
+- 既存のミッションクリティカル系は **Snowflake Postgres** 側で**ガバナンス一体運用**。  
+- 新規/実験的機能は **Neon のブランチ**で即席の環境を切って試し、良ければ本線にマージ。
+
+## 3) チームの働き方が変わる
+- **データエンジニア**：ETL の配線作業が減り、**同期モードと再送 SOP** の設計に注力。  
+- **アプリ/ML エンジニア**：**ブランチ単位**で機能＋特徴量＋DB を**丸ごと複製**して検証。  
+- **セキュリティ/ガバナンス**：**Horizon / Unity Catalog** により**権限・監査・リネージ**を一元管理。
+
+---
+
+# Before / After（サマリ）
+
+| 観点 | いま（Before） | 達成後（After） |
+|---|---|---|
+| データ連携 | バッチ ETL 中心・待ち時間長い | **Triggered/Continuous 同期**でほぼリアルタイム |
+| 開発速度 | DB/分析/AI が縦割り | **サーバレス × ブランチ**で数分〜数時間単位の検証 |
+| ガバナンス | システムごと分散 | **Horizon / Unity Catalog** で一元化 |
+| 本番移行 | 移行コスト・リスク高 | **Snowflake Postgres** で**段階移行＋統治一体化** |
+| AI の埋め込み | POC 止まり | **常時稼働のエージェント/レコメンド**として運用 |
+
+---
+
+# どう使い分ける？（超シンプル指針）
+- **既存本番の信頼性・統治・共有が最優先** → **Snowflake Postgres（＋Unistore/Hybrid Tables）** を主軸に。  
+- **新機能/AI エージェントを高速反復** → **Neon ＋ Lakebase（Synced Tables）** を主軸に。  
+- 実務では**両方を併走**：**基幹は Snowflake、攻めは Databricks、同期で循環**させるのが現実解。
+
+---
+
+# 成果を測る KPI（例）
+- **データ遅延 p95**（運用 → 分析 → 反映まで）  
+- **実験〜本番のリードタイム**（ブランチ作成 → マージ）  
+- **重複/順不同の再処理時間**、**権限違反ゼロ件継続日数**  
+- **新機能リリース頻度**、**AI 機能の採用率/CTR/収益貢献**
+
+---
+
+# 一文で
+> **Snowflake は“安心して載せる基幹の土台”、Databricks は“速く作って回す加速装置”。** 両者が**同期でつながる**と、**データ → AI → アプリ反映**が**同じ床**で回る世界になります。
+
+-----
+
 ## 参考文献（番号順）
 1. Databricks: *Announcing Lakebase Public Preview* (2025-06-11) — https://www.databricks.com/blog/announcing-lakebase-public-preview  
 2. Databricks Press: *Databricks Agrees to Acquire Neon* (2025-05-14) — https://www.databricks.com/company/newsroom/press-releases/databricks-agrees-acquire-neon-help-developers-deliver-ai-systems  
